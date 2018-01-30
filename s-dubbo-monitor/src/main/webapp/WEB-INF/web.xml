@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>dubbo-monitor</display-name>
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/monitor-app-context*.xml</param-value>
+	</context-param>
+  
+  
+ <!-- Struts2 filter start -->
+  <filter>
+      <filter-name>struts2</filter-name>
+      <filter-class>
+        org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter 
+      </filter-class>
+   </filter>
+   
+   <!-- Spring security filter start -->
+ 	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+ <!-- Struts mapping start -->
+   <filter-mapping>
+      <filter-name>struts2</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+   
+    <!-- Spring security mapping start --> 
+   <filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+   <!-- 监听器 --> 
+   <!-- 添加监听器保证session生命周期发生时spring security 被更新 -->
+	<listener>
+        <listener-class>
+            org.springframework.security.web.session.HttpSessionEventPublisher
+        </listener-class>
+    </listener>
+
+   <!-- 监听器 --> 
+   
+   <listener>
+    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+   <welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+
+
+</web-app>

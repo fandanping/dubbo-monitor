@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+<!--
+	
+	<package name="test" namespace="/test" extends="base">
+	   
+	    测试搭建流程 
+	   <action name="test" class="com.neusoft.neusipo.monitor.action.testAction" method="start">
+	    <result name="success">/hello.jsp</result>
+	   </action>
+	
+	</package>
+
+
+-->
+     <package name="statistics" namespace="/statistics" extends="base">
+	   
+	  <action name="service" class="monitor.showServiceInfoAC" method="getServerStatus">
+	     
+	   </action>
+	
+	</package>
+	
+	<package name="monitor" namespace="/monitor" extends="base">
+	   
+	  <action name="login_success">
+	     <result>/monitor/index/index.jsp</result> 
+	   </action>
+	   <action name="logout">
+	       
+	   </action>
+	
+	</package>
+   
+
+
+
+</struts>

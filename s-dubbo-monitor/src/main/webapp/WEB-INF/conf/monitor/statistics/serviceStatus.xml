@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	
+	<!-- fandp start For monitor-->
+	<!-- 查看服务接口状态信息 begin -->
+	<bean id="monitor.showServiceInfoAC" class="com.neusoft.neusipo.monitor.action.ServerStatusAction" scope="prototype" >
+		<property name="serviceStatusService">
+			<ref bean="serverStatusService" />
+		</property>
+	</bean>	
+	<bean id="serverStatusService" class="com.neusoft.neusipo.monitor.service.impl.ServerStatusServiceImpl">
+	   <property name="serverStatusDao" ref="serverStatusDao"></property>
+	</bean>
+	<bean id="serverStatusDao" class="com.neusoft.neusipo.monitor.dao.impl.ServerStatusDaoImpl"> 
+		<property name="jdbctemplate" ref="spring.jdbcTemplate"></property>
+	</bean>
+	
+	<!-- 查看服务接口状态信息  end -->
+	
+	<!-- fandp end For monitor-->
+	
+</beans> 
